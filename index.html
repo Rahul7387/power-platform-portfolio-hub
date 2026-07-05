@@ -3,126 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rahul Gupta — Power Platform Portfolio</title>
+<title>Rahul Gupta — Power Platform Solutions Architect & Corporate Trainer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0B1220; --card:#ffffff; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C;
     --purple:#742774; --blue:#0066FF; --copilot1:#0F6CBD; --copilot2:#8764B8; --copilot3:#D83B9A;
     --pa:#0066FF; --success:#107C10;
 
-    --pf-bg1:#080B14; --pf-bg2:#111a2e; --pf-bg3:#0d1424;
-    --amber:#FFB020; --amber-soft:#ffcf7a; --cyan:#2DD4EA;
-    --pf-text-hi:#F5F7FC; --pf-text-lo:#93A0BE;
+    --navy1:#0A1830; --navy2:#0E2140; --navy3:#0C1B34;
+    --accent:#3B7DFF; --accent-deep:#245BD1; --gold:#C9A64A;
+    --hi:#FFFFFF; --lo:#93A2BE; --line:rgba(255,255,255,.10);
   }
   *{box-sizing:border-box;}
   body{margin:0;font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:#F3F2F1;color:var(--text);}
   a{-webkit-tap-highlight-color:transparent;}
 
-  /* ===================== PROFILE HERO ===================== */
-  .profile-hero{
-    position:relative;
+  /* ===================== CORPORATE HERO ===================== */
+  .exec-hero{
+    position:relative;overflow:hidden;
     background:
-      radial-gradient(ellipse 900px 500px at 50% -10%, #1b2740 0%, transparent 60%),
-      radial-gradient(ellipse 700px 500px at 85% 90%, #1a1030 0%, transparent 55%),
-      linear-gradient(180deg, var(--pf-bg1) 0%, var(--pf-bg3) 55%, var(--pf-bg2) 100%);
-    overflow:hidden;
-    padding:64px 24px 74px;
-    isolation:isolate;
+      linear-gradient(180deg, var(--navy1) 0%, var(--navy3) 55%, var(--navy2) 100%);
+    padding:0 24px;
   }
-  .flow-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9;}
-  .flow-canvas svg{width:100%;height:100%;display:block;}
+  .blueprint-grid{
+    position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:
+      linear-gradient(rgba(59,125,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,125,255,.07) 1px, transparent 1px);
+    background-size:42px 42px;
+    -webkit-mask-image:radial-gradient(ellipse 700px 420px at 50% 0%, #000 40%, transparent 80%);
+    mask-image:radial-gradient(ellipse 700px 420px at 50% 0%, #000 40%, transparent 80%);
+  }
+  .glow-orb{position:absolute;z-index:0;border-radius:50%;filter:blur(70px);opacity:.25;}
+  .glow-orb.a{width:420px;height:420px;background:var(--accent);top:-160px;left:-100px;}
+  .glow-orb.b{width:360px;height:360px;background:var(--gold);bottom:-140px;right:-80px;opacity:.14;}
 
-  .node-chip{
-    position:absolute;transform:translate(-50%,-50%);
-    display:flex;align-items:center;gap:6px;
-    background:rgba(18,26,46,.72);border:1px solid rgba(255,255,255,.09);
-    backdrop-filter:blur(6px);
-    padding:6px 12px;border-radius:20px;
-    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
-    color:var(--pf-text-lo);white-space:nowrap;z-index:2;
-    box-shadow:0 4px 14px rgba(0,0,0,.35);
-  }
-  .node-chip .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+  .exec-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:56px 0 46px;text-align:center;}
 
-  .profile-inner{position:relative;z-index:3;max-width:720px;margin:0 auto;text-align:center;padding-top:64px;}
+  .badge-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
+  .pill{
+    display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.3px;
+    padding:6px 14px;border-radius:20px;font-family:'Inter',sans-serif;
+  }
+  .pill.cert{color:var(--gold);border:1px solid rgba(201,166,74,.4);background:rgba(201,166,74,.08);}
+  .pill.status{color:#7ee0a8;border:1px solid rgba(46,204,113,.35);background:rgba(46,204,113,.08);}
+  .pill.status .pulse{width:7px;height:7px;border-radius:50%;background:#3ddc84;position:relative;flex-shrink:0;}
+  .pill.status .pulse::after{
+    content:"";position:absolute;inset:0;border-radius:50%;background:#3ddc84;
+    animation:pulse-ring 1.8s ease-out infinite;
+  }
+  @keyframes pulse-ring{0%{transform:scale(1);opacity:.7;}100%{transform:scale(2.8);opacity:0;}}
 
-  .avatar-ring{
-    position:relative;width:112px;height:112px;margin:0 auto 18px;
-    border-radius:50%;
-  }
-  .avatar-ring::before{
-    content:"";position:absolute;inset:-5px;border-radius:50%;
-    background:conic-gradient(from 0deg, var(--amber), var(--cyan), var(--amber-soft), var(--amber));
-    animation:spin 7s linear infinite;
-  }
-  .avatar-ring img{
-    position:relative;width:112px;height:112px;border-radius:50%;
-    border:3px solid var(--pf-bg1);display:block;object-fit:cover;
-  }
-  @keyframes spin{to{transform:rotate(360deg);}}
-
-  .cert-pill{
-    display:inline-flex;align-items:center;gap:6px;
-    font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.3px;
-    color:var(--amber-soft);border:1px solid rgba(255,176,32,.35);background:rgba(255,176,32,.08);
-    padding:5px 13px;border-radius:20px;margin-bottom:18px;
+  .avatar-frame{width:104px;height:104px;margin:0 auto 22px;position:relative;}
+  .avatar-frame img{
+    width:104px;height:104px;border-radius:50%;object-fit:cover;
+    border:3px solid rgba(59,125,255,.5);
+    box-shadow:0 0 0 6px rgba(59,125,255,.08), 0 14px 30px rgba(0,0,0,.4);
+    display:block;
   }
 
-  .profile-name{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;
-    font-size:clamp(30px,5vw,44px);color:var(--pf-text-hi);margin:0 0 8px;letter-spacing:-.5px;
+  .exec-name{
+    font-family:'Manrope',sans-serif;font-weight:800;letter-spacing:-.4px;
+    font-size:clamp(28px,4.4vw,40px);color:var(--hi);margin:0 0 10px;
   }
-  .profile-role{
-    font-size:14.5px;color:var(--cyan);font-weight:600;margin:0 0 14px;letter-spacing:.2px;
+  .exec-role{
+    font-family:'Manrope',sans-serif;font-weight:600;font-size:15px;color:var(--accent);
+    margin:0 0 16px;letter-spacing:.2px;
   }
-  .profile-tagline{
-    font-size:14.5px;color:var(--pf-text-lo);line-height:1.7;max-width:520px;margin:0 auto 30px;
-    font-style:italic;
+  .exec-tagline{
+    font-size:14.5px;color:var(--lo);line-height:1.75;max-width:600px;margin:0 auto 34px;
   }
 
-  .stat-strip{
-    display:flex;justify-content:center;align-items:stretch;gap:0;
-    margin:0 auto 34px;max-width:560px;
-    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;
-    overflow:hidden;
+  .cred-strip{
+    display:flex;justify-content:center;max-width:620px;margin:0 auto 36px;
+    background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;overflow:hidden;
   }
-  .stat-item{flex:1;padding:16px 10px;border-right:1px solid rgba(255,255,255,.08);}
-  .stat-item:last-child{border-right:none;}
-  .stat-item .num{
-    display:block;font-family:'JetBrains Mono',monospace;font-weight:700;
-    font-size:22px;color:var(--pf-text-hi);
-  }
-  .stat-item .lbl{display:block;font-size:10px;color:var(--pf-text-lo);margin-top:4px;text-transform:uppercase;letter-spacing:.5px;}
+  .cred-item{flex:1;padding:18px 10px;border-right:1px solid var(--line);}
+  .cred-item:last-child{border-right:none;}
+  .cred-item .num{display:block;font-family:'Manrope',sans-serif;font-weight:800;font-size:21px;color:var(--hi);}
+  .cred-item .lbl{display:block;font-size:10px;color:var(--lo);margin-top:5px;text-transform:uppercase;letter-spacing:.6px;font-weight:600;}
 
-  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;}
   .cta{
-    padding:13px 24px;border-radius:10px;font-size:13.5px;font-weight:700;text-decoration:none;
-    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:8px;font-size:13.5px;font-weight:700;text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;
   }
   .cta:hover{transform:translateY(-2px);}
-  .cta.primary{background:linear-gradient(135deg,var(--amber),#ff9500);color:#1a1200;box-shadow:0 8px 24px rgba(255,176,32,.28);}
-  .cta.primary:hover{box-shadow:0 12px 30px rgba(255,176,32,.4);}
-  .cta.secondary{background:rgba(255,255,255,.06);color:var(--pf-text-hi);border:1px solid rgba(255,255,255,.16);}
-  .cta.secondary:hover{background:rgba(255,255,255,.1);}
+  .cta.primary{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;box-shadow:0 10px 24px rgba(59,125,255,.32);}
+  .cta.primary:hover{box-shadow:0 14px 30px rgba(59,125,255,.44);}
+  .cta.secondary{background:rgba(255,255,255,.05);color:var(--hi);border:1px solid var(--line);}
+  .cta.secondary:hover{background:rgba(255,255,255,.09);}
+  .cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 
-  .cta.primary:focus-visible, .cta.secondary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+  /* ===================== SERVICE PILLARS ===================== */
+  .services-band{position:relative;z-index:2;background:var(--navy2);border-top:1px solid var(--line);}
+  .services-inner{max-width:1000px;margin:0 auto;padding:34px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .service-col{padding:14px 22px;text-align:left;border-left:1px solid var(--line);}
+  .service-col:first-child{border-left:none;}
+  .service-col .s-icon{font-size:18px;margin-bottom:8px;display:block;}
+  .service-col .s-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:13.5px;color:var(--hi);margin-bottom:6px;}
+  .service-col .s-desc{font-size:11.5px;color:var(--lo);line-height:1.6;}
 
   /* ===================== QUIET INTRO STRIP ===================== */
   .intro-strip{background:#fff;border-bottom:1px solid var(--border);padding:34px 24px;text-align:center;}
   .intro-strip .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--pa);font-weight:700;}
-  .intro-strip h2{font-family:'Space Grotesk',sans-serif;font-size:22px;margin:8px 0 8px;color:var(--text);}
+  .intro-strip h2{font-family:'Manrope',sans-serif;font-weight:800;font-size:22px;margin:8px 0 8px;color:var(--text);}
   .intro-strip p{font-size:13.5px;color:var(--text-secondary);max-width:640px;margin:0 auto;line-height:1.6;}
   .intro-strip .updated-badge{
     display:inline-block;margin-top:14px;background:#F3F2F1;color:var(--text-secondary);
-    padding:5px 14px;border-radius:20px;font-size:11.5px;font-family:'JetBrains Mono',monospace;
+    padding:5px 14px;border-radius:20px;font-size:11.5px;font-weight:600;
   }
 
-  @media (prefers-reduced-motion: reduce){
-    .avatar-ring::before{animation:none;}
+  @media (max-width: 720px){
+    .services-inner{grid-template-columns:1fr;}
+    .service-col{border-left:none;border-top:1px solid var(--line);}
+    .service-col:first-child{border-top:none;}
   }
 
   .container{max-width:1100px;margin:36px auto 0;padding:0 24px 60px;}
@@ -162,57 +161,55 @@
 </head>
 <body>
 
-  <section class="profile-hero">
-    <div class="flow-canvas" aria-hidden="true">
-      <svg viewBox="0 0 1000 560" preserveAspectRatio="xMidYMin slice">
-        <defs>
-          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#2DD4EA" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#FFB020" stop-opacity="0.15"/>
-          </linearGradient>
-        </defs>
-        <path id="p1" d="M120,50 Q300,180 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
-        <path id="p2" d="M270,26 Q380,160 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
-        <path id="p3" d="M420,12 Q460,150 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
-        <path id="p4" d="M580,12 Q540,150 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
-        <path id="p5" d="M730,26 Q620,160 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
-        <path id="p6" d="M880,50 Q700,180 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
+  <section class="exec-hero">
+    <div class="blueprint-grid" aria-hidden="true"></div>
+    <div class="glow-orb a" aria-hidden="true"></div>
+    <div class="glow-orb b" aria-hidden="true"></div>
 
-        <circle class="flow-dot" r="3.4" fill="#FFB020"><animateMotion dur="4.2s" repeatCount="indefinite" begin="0s"><mpath href="#p1"/></animateMotion></circle>
-        <circle class="flow-dot" r="3.4" fill="#2DD4EA"><animateMotion dur="5.1s" repeatCount="indefinite" begin="0.7s"><mpath href="#p2"/></animateMotion></circle>
-        <circle class="flow-dot" r="3.4" fill="#FFB020"><animateMotion dur="4.6s" repeatCount="indefinite" begin="1.4s"><mpath href="#p3"/></animateMotion></circle>
-        <circle class="flow-dot" r="3.4" fill="#2DD4EA"><animateMotion dur="5.4s" repeatCount="indefinite" begin="2.1s"><mpath href="#p4"/></animateMotion></circle>
-        <circle class="flow-dot" r="3.4" fill="#FFB020"><animateMotion dur="4.9s" repeatCount="indefinite" begin="0.35s"><mpath href="#p5"/></animateMotion></circle>
-        <circle class="flow-dot" r="3.4" fill="#2DD4EA"><animateMotion dur="4.3s" repeatCount="indefinite" begin="1.8s"><mpath href="#p6"/></animateMotion></circle>
-      </svg>
+    <div class="exec-inner">
+      <div class="badge-row">
+        <span class="pill cert">🎖️ MICROSOFT CERTIFIED</span>
+        <span class="pill status"><span class="pulse"></span>OPEN TO CONSULTING &amp; TRAINING ENGAGEMENTS</span>
+      </div>
 
-      <div class="node-chip" style="left:12%; top:9%;"><span class="dot" style="background:#00A1F1;"></span>SharePoint</div>
-      <div class="node-chip" style="left:27%; top:4.6%;"><span class="dot" style="background:#0066FF;"></span>Power Automate</div>
-      <div class="node-chip" style="left:42%; top:2.1%;"><span class="dot" style="background:#F2C811;"></span>Power BI</div>
-      <div class="node-chip" style="left:58%; top:2.1%;"><span class="dot" style="background:#8764B8;"></span>Copilot Studio</div>
-      <div class="node-chip" style="left:73%; top:4.6%;"><span class="dot" style="background:#742774;"></span>AI Builder</div>
-      <div class="node-chip" style="left:88%; top:9%;"><span class="dot" style="background:#0F6CBD;"></span>Dataverse</div>
-    </div>
-
-    <div class="profile-inner">
-      <div class="avatar-ring">
+      <div class="avatar-frame">
         <img src="https://avatars.githubusercontent.com/u/27341844?v=4" alt="Rahul Gupta">
       </div>
-      <div class="cert-pill">🎖️ MICROSOFT CERTIFIED</div>
-      <h1 class="profile-name">Rahul Gupta</h1>
-      <p class="profile-role">Power Platform Architect · SharePoint · Power BI · AI Automation</p>
-      <p class="profile-tagline">"Building smarter workflows — if it can be automated, automate it. If it can't yet, reimagine it."</p>
 
-      <div class="stat-strip">
-        <div class="stat-item"><span class="num">28</span><span class="lbl">Public Repos</span></div>
-        <div class="stat-item"><span class="num">17</span><span class="lbl">Curated Here</span></div>
-        <div class="stat-item"><span class="num">10+</span><span class="lbl">Years in IT</span></div>
-        <div class="stat-item"><span class="num">2017</span><span class="lbl">On GitHub Since</span></div>
+      <h1 class="exec-name">Rahul Gupta</h1>
+      <p class="exec-role">Power Platform Solutions Architect &amp; Corporate Trainer</p>
+      <p class="exec-tagline">Helping enterprises modernize operations and upskill teams through Microsoft Power Platform, SharePoint, Power BI, and AI-driven automation — with 10+ years delivering production-grade solutions and hands-on technical training.</p>
+
+      <div class="cred-strip">
+        <div class="cred-item"><span class="num">10+</span><span class="lbl">Years in IT</span></div>
+        <div class="cred-item"><span class="num">28</span><span class="lbl">Repositories</span></div>
+        <div class="cred-item"><span class="num">17</span><span class="lbl">Playbooks &amp; Courses</span></div>
+        <div class="cred-item"><span class="num">✓</span><span class="lbl">MS Certified</span></div>
       </div>
 
       <div class="cta-row">
-        <a class="cta primary" href="https://github.com/Rahul7387" target="_blank" rel="noopener">★ Follow on GitHub</a>
-        <a class="cta secondary" href="#portfolio">Explore the Portfolio ↓</a>
+        <a class="cta primary" href="https://github.com/Rahul7387" target="_blank" rel="noopener">Connect on GitHub</a>
+        <a class="cta secondary" href="#portfolio">View Portfolio &amp; Case Studies ↓</a>
+      </div>
+    </div>
+
+    <div class="services-band">
+      <div class="services-inner">
+        <div class="service-col">
+          <span class="s-icon">🏗️</span>
+          <div class="s-title">IT Solutions Consulting</div>
+          <div class="s-desc">End-to-end Power Platform, SharePoint, and Dataverse solution design — architecture, security, and ALM built for enterprise scale.</div>
+        </div>
+        <div class="service-col">
+          <span class="s-icon">🎓</span>
+          <div class="s-title">Corporate Training &amp; Enablement</div>
+          <div class="s-desc">Structured, hands-on training programs — from citizen-developer fundamentals to expert-level architecture and governance.</div>
+        </div>
+        <div class="service-col">
+          <span class="s-icon">🤖</span>
+          <div class="s-title">AI &amp; Automation Strategy</div>
+          <div class="s-desc">Copilot Studio agents, AI Builder models, and Power Automate pipelines that turn manual processes into governed automation.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -496,9 +493,6 @@
 
 
 <script>
-if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('.flow-dot').forEach(function(el){ el.remove(); });
-}
 document.querySelectorAll('.cta.secondary[href^="#"]').forEach(function(a){
   a.addEventListener('click', function(e){
     e.preventDefault();
