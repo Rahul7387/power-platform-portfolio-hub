@@ -3,28 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rahul's Power Platform Portfolio — Master Index</title>
+<title>Rahul Gupta — Power Platform Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0B1220; --card:#ffffff; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C;
     --purple:#742774; --blue:#0066FF; --copilot1:#0F6CBD; --copilot2:#8764B8; --copilot3:#D83B9A;
     --pa:#0066FF; --success:#107C10;
+
+    --pf-bg1:#080B14; --pf-bg2:#111a2e; --pf-bg3:#0d1424;
+    --amber:#FFB020; --amber-soft:#ffcf7a; --cyan:#2DD4EA;
+    --pf-text-hi:#F5F7FC; --pf-text-lo:#93A0BE;
   }
   *{box-sizing:border-box;}
-  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:#F3F2F1;color:var(--text);}
+  body{margin:0;font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:#F3F2F1;color:var(--text);}
+  a{-webkit-tap-highlight-color:transparent;}
 
-  .hero{
-    background:radial-gradient(circle at 20% 20%, #1b2a4a 0%, #0B1220 60%),
-               linear-gradient(120deg,#742774 0%,#0066FF 50%,#0F6CBD 100%);
-    background-blend-mode:overlay;
-    color:#fff;padding:56px 24px 64px;text-align:center;
+  /* ===================== PROFILE HERO ===================== */
+  .profile-hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, #1b2740 0%, transparent 60%),
+      radial-gradient(ellipse 700px 500px at 85% 90%, #1a1030 0%, transparent 55%),
+      linear-gradient(180deg, var(--pf-bg1) 0%, var(--pf-bg3) 55%, var(--pf-bg2) 100%);
+    overflow:hidden;
+    padding:64px 24px 74px;
+    isolation:isolate;
   }
-  .hero .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#cdd9ff;font-weight:700;}
-  .hero h1{font-size:32px;margin:12px 0 10px;}
-  .hero p{font-size:14.5px;color:#e6ecff;max-width:640px;margin:0 auto;line-height:1.6;}
-  .hero .meta{margin-top:18px;font-size:12px;color:#b9c6f0;}
+  .flow-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9;}
+  .flow-canvas svg{width:100%;height:100%;display:block;}
 
-  .container{max-width:1100px;margin:-36px auto 0;padding:0 24px 60px;}
+  .node-chip{
+    position:absolute;transform:translate(-50%,-50%);
+    display:flex;align-items:center;gap:6px;
+    background:rgba(18,26,46,.72);border:1px solid rgba(255,255,255,.09);
+    backdrop-filter:blur(6px);
+    padding:6px 12px;border-radius:20px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+    color:var(--pf-text-lo);white-space:nowrap;z-index:2;
+    box-shadow:0 4px 14px rgba(0,0,0,.35);
+  }
+  .node-chip .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+
+  .profile-inner{position:relative;z-index:3;max-width:720px;margin:0 auto;text-align:center;padding-top:64px;}
+
+  .avatar-ring{
+    position:relative;width:112px;height:112px;margin:0 auto 18px;
+    border-radius:50%;
+  }
+  .avatar-ring::before{
+    content:"";position:absolute;inset:-5px;border-radius:50%;
+    background:conic-gradient(from 0deg, var(--amber), var(--cyan), var(--amber-soft), var(--amber));
+    animation:spin 7s linear infinite;
+  }
+  .avatar-ring img{
+    position:relative;width:112px;height:112px;border-radius:50%;
+    border:3px solid var(--pf-bg1);display:block;object-fit:cover;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .cert-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.3px;
+    color:var(--amber-soft);border:1px solid rgba(255,176,32,.35);background:rgba(255,176,32,.08);
+    padding:5px 13px;border-radius:20px;margin-bottom:18px;
+  }
+
+  .profile-name{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(30px,5vw,44px);color:var(--pf-text-hi);margin:0 0 8px;letter-spacing:-.5px;
+  }
+  .profile-role{
+    font-size:14.5px;color:var(--cyan);font-weight:600;margin:0 0 14px;letter-spacing:.2px;
+  }
+  .profile-tagline{
+    font-size:14.5px;color:var(--pf-text-lo);line-height:1.7;max-width:520px;margin:0 auto 30px;
+    font-style:italic;
+  }
+
+  .stat-strip{
+    display:flex;justify-content:center;align-items:stretch;gap:0;
+    margin:0 auto 34px;max-width:560px;
+    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;
+    overflow:hidden;
+  }
+  .stat-item{flex:1;padding:16px 10px;border-right:1px solid rgba(255,255,255,.08);}
+  .stat-item:last-child{border-right:none;}
+  .stat-item .num{
+    display:block;font-family:'JetBrains Mono',monospace;font-weight:700;
+    font-size:22px;color:var(--pf-text-hi);
+  }
+  .stat-item .lbl{display:block;font-size:10px;color:var(--pf-text-lo);margin-top:4px;text-transform:uppercase;letter-spacing:.5px;}
+
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .cta{
+    padding:13px 24px;border-radius:10px;font-size:13.5px;font-weight:700;text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .cta:hover{transform:translateY(-2px);}
+  .cta.primary{background:linear-gradient(135deg,var(--amber),#ff9500);color:#1a1200;box-shadow:0 8px 24px rgba(255,176,32,.28);}
+  .cta.primary:hover{box-shadow:0 12px 30px rgba(255,176,32,.4);}
+  .cta.secondary{background:rgba(255,255,255,.06);color:var(--pf-text-hi);border:1px solid rgba(255,255,255,.16);}
+  .cta.secondary:hover{background:rgba(255,255,255,.1);}
+
+  .cta.primary:focus-visible, .cta.secondary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+
+  /* ===================== QUIET INTRO STRIP ===================== */
+  .intro-strip{background:#fff;border-bottom:1px solid var(--border);padding:34px 24px;text-align:center;}
+  .intro-strip .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--pa);font-weight:700;}
+  .intro-strip h2{font-family:'Space Grotesk',sans-serif;font-size:22px;margin:8px 0 8px;color:var(--text);}
+  .intro-strip p{font-size:13.5px;color:var(--text-secondary);max-width:640px;margin:0 auto;line-height:1.6;}
+  .intro-strip .updated-badge{
+    display:inline-block;margin-top:14px;background:#F3F2F1;color:var(--text-secondary);
+    padding:5px 14px;border-radius:20px;font-size:11.5px;font-family:'JetBrains Mono',monospace;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .avatar-ring::before{animation:none;}
+  }
+
+  .container{max-width:1100px;margin:36px auto 0;padding:0 24px 60px;}
 
   .repo-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:22px;}
 
@@ -57,18 +158,70 @@
 
   .footer-note{text-align:center;margin-top:40px;font-size:12px;color:var(--text-secondary);}
   .footer-note a{color:var(--blue);}
-
-  .updated-badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
-    padding:5px 14px;border-radius:20px;font-size:11.5px;margin-top:16px;}
 </style>
 </head>
 <body>
 
-  <div class="hero">
-    <div class="eyebrow">Rahul7387 · GitHub Portfolio</div>
-    <h1>Power Platform Project Portfolio</h1>
-    <p>Three progressive, hands-on training and proof-of-concept repositories spanning the full Microsoft Power Platform — Power Apps, Power Automate, Power Pages, AI Builder, Copilot Studio, and Dynamics 365 integration. Every project ships with an architecture diagram, a step-by-step build guide, and a live visual mockup.</p>
-    <div class="updated-badge">📅 Kept current as of July 2026</div>
+  <section class="profile-hero">
+    <div class="flow-canvas" aria-hidden="true">
+      <svg viewBox="0 0 1000 560" preserveAspectRatio="xMidYMin slice">
+        <defs>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2DD4EA" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#FFB020" stop-opacity="0.15"/>
+          </linearGradient>
+        </defs>
+        <path id="p1" d="M120,50 Q300,180 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
+        <path id="p2" d="M270,26 Q380,160 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
+        <path id="p3" d="M420,12 Q460,150 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
+        <path id="p4" d="M580,12 Q540,150 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
+        <path id="p5" d="M730,26 Q620,160 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
+        <path id="p6" d="M880,50 Q700,180 500,270" fill="none" stroke="url(#lineGrad)" stroke-width="1.4"/>
+
+        <circle class="flow-dot" r="3.4" fill="#FFB020"><animateMotion dur="4.2s" repeatCount="indefinite" begin="0s"><mpath href="#p1"/></animateMotion></circle>
+        <circle class="flow-dot" r="3.4" fill="#2DD4EA"><animateMotion dur="5.1s" repeatCount="indefinite" begin="0.7s"><mpath href="#p2"/></animateMotion></circle>
+        <circle class="flow-dot" r="3.4" fill="#FFB020"><animateMotion dur="4.6s" repeatCount="indefinite" begin="1.4s"><mpath href="#p3"/></animateMotion></circle>
+        <circle class="flow-dot" r="3.4" fill="#2DD4EA"><animateMotion dur="5.4s" repeatCount="indefinite" begin="2.1s"><mpath href="#p4"/></animateMotion></circle>
+        <circle class="flow-dot" r="3.4" fill="#FFB020"><animateMotion dur="4.9s" repeatCount="indefinite" begin="0.35s"><mpath href="#p5"/></animateMotion></circle>
+        <circle class="flow-dot" r="3.4" fill="#2DD4EA"><animateMotion dur="4.3s" repeatCount="indefinite" begin="1.8s"><mpath href="#p6"/></animateMotion></circle>
+      </svg>
+
+      <div class="node-chip" style="left:12%; top:9%;"><span class="dot" style="background:#00A1F1;"></span>SharePoint</div>
+      <div class="node-chip" style="left:27%; top:4.6%;"><span class="dot" style="background:#0066FF;"></span>Power Automate</div>
+      <div class="node-chip" style="left:42%; top:2.1%;"><span class="dot" style="background:#F2C811;"></span>Power BI</div>
+      <div class="node-chip" style="left:58%; top:2.1%;"><span class="dot" style="background:#8764B8;"></span>Copilot Studio</div>
+      <div class="node-chip" style="left:73%; top:4.6%;"><span class="dot" style="background:#742774;"></span>AI Builder</div>
+      <div class="node-chip" style="left:88%; top:9%;"><span class="dot" style="background:#0F6CBD;"></span>Dataverse</div>
+    </div>
+
+    <div class="profile-inner">
+      <div class="avatar-ring">
+        <img src="https://avatars.githubusercontent.com/u/27341844?v=4" alt="Rahul Gupta">
+      </div>
+      <div class="cert-pill">🎖️ MICROSOFT CERTIFIED</div>
+      <h1 class="profile-name">Rahul Gupta</h1>
+      <p class="profile-role">Power Platform Architect · SharePoint · Power BI · AI Automation</p>
+      <p class="profile-tagline">"Building smarter workflows — if it can be automated, automate it. If it can't yet, reimagine it."</p>
+
+      <div class="stat-strip">
+        <div class="stat-item"><span class="num">28</span><span class="lbl">Public Repos</span></div>
+        <div class="stat-item"><span class="num">17</span><span class="lbl">Curated Here</span></div>
+        <div class="stat-item"><span class="num">10+</span><span class="lbl">Years in IT</span></div>
+        <div class="stat-item"><span class="num">2017</span><span class="lbl">On GitHub Since</span></div>
+      </div>
+
+      <div class="cta-row">
+        <a class="cta primary" href="https://github.com/Rahul7387" target="_blank" rel="noopener">★ Follow on GitHub</a>
+        <a class="cta secondary" href="#portfolio">Explore the Portfolio ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="intro-strip" id="portfolio">
+    <div class="eyebrow">The Portfolio</div>
+    <h2>17 repositories, one architect</h2>
+    <p>Three progressive, hands-on training and proof-of-concept portfolios spanning the full Microsoft Power Platform — Power Apps, Power Automate, Power Pages, AI Builder, Copilot Studio, and Dynamics 365 — plus focused reference guides on formulas, delegation, dropdowns, navigation, and more. Every flagship project ships with an architecture diagram, a step-by-step build guide, and a live visual mockup.</p>
+    <div class="updated-badge">📅 KEPT CURRENT AS OF JULY 2026</div>
   </div>
 
   <div class="container">
@@ -341,5 +494,18 @@
     </div>
   </div>
 
+
+<script>
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.flow-dot').forEach(function(el){ el.remove(); });
+}
+document.querySelectorAll('.cta.secondary[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
 </body>
 </html>
