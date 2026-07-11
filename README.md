@@ -34,7 +34,7 @@ A single landing point for every Power Platform-related repository in this accou
 | [Power-Automate-Integration-with-Claude-Prompt-](https://github.com/Rahul7387/Power-Automate-Integration-with-Claude-Prompt-) | Flow that enhances text via Claude and writes back to SharePoint/monday.com/email | 🔒 Private — no live site |
 | [SharepointAI](https://github.com/Rahul7387/SharepointAI) | AI assistant app for SharePoint lists/libraries/documents (Flask backend) | 🔒 Private — no live site |
 | [Power-Platform-Monitor](https://github.com/Rahul7387/Power-Platform-Monitor) | Canvas App admin dashboard for monitoring flows and apps tenant-wide | [Live](https://rahul7387.github.io/Power-Platform-Monitor/) |
-| [model-driven-apps-course](https://github.com/Rahul7387/model-driven-apps-course) | Beginner-friendly Model-Driven Apps course — Dataverse, Business Rules, Business Process Flows, JavaScript, AI/Canvas App integration, XrmToolBox, 13 modules + practice project + live mockup | [Live](https://rahul7387.github.io/model-driven-apps-course/) |
+| [model-driven-apps-course](https://github.com/Rahul7387/model-driven-apps-course) | Beginner-friendly Model-Driven Apps course — Dataverse, Business Rules, Business Process Flows, JavaScript, AI/Canvas App integration, XrmToolBox, 14 modules (incl. Ribbon Customization) + practice project + live mockup | [Live](https://rahul7387.github.io/model-driven-apps-course/) |
 
 Each public repo's own live site is itself an index page linking to that repo's individual projects/modules (README + interactive HTML mockup, where applicable).
 
